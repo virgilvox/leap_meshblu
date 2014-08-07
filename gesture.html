@@ -1,0 +1,74 @@
+<html>
+<head>
+  <script src="http://js.leapmotion.com/leap-0.6.0.min.js"></script>
+  <script src="http://js.leapmotion.com/leap-plugins-0.1.6.min.js"></script>
+<script>
+var controller = new Leap.Controller({ enableGestures: true });
+
+
+controller.on( 'frame' , function( data ){
+
+        frame = data;
+ 
+
+  for( var i =  0; i < frame.gestures.length; i++){
+
+      var gesture  = frame.gestures[0];
+      
+
+ var type = gesture.type;
+
+    switch( type ){
+
+      case "circle":
+        onCircle( gesture );
+        break;
+
+      case "swipe":
+        onSwipe( gesture );
+        break;
+
+      case "screenTap":
+        onScreenTap( gesture );
+        break;
+
+      case "keyTap":
+        onKeyTap( gesture );
+        break;
+
+    }
+
+    function onCircle( gesture ){
+
+    	console.log('circle');
+    }
+
+    function onSwipe( gesture ){
+
+    	console.log('swipe');
+
+    }
+
+    function onScreenTap( gesture ){
+
+    	console.log('screen tap');
+
+    }
+
+    function onKeyTap( gesture ){
+
+    	console.log('key tap');
+    }
+
+    }
+
+      });
+
+      controller.connect();
+
+</script>
+
+
+</head>
+
+</html>
